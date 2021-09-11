@@ -14,7 +14,8 @@ document.getElementById("file").onchange = function (e) {
       for (var x = 0; x < canvas.width; x++) {
         for (var y = 0; y < canvas.height; y++) {
           //gris(imageData, x, y);
-          negativo(imageData, x, y);
+          //negativo(imageData, x, y);
+          brillo(imageData, x, y)
         }
       }
     };
@@ -61,3 +62,16 @@ function negativo(imageData, x, y) {
   //coloco la imagen en el canvas
   ctx.putImageData(imageData, 0, 0);
 }
+
+
+function brillo(imageData, x, y) {
+  var valor = 70;
+  //parseInt(document.getElementById("brillo").value);
+  //ctx.putImageData(bkp_img, 0, 0);
+  //imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  index = (x + y * imageData.width) * 4; //agarro el índice de la matriz // covnieron en matriz
+  imageData.data[index] = (imageData.data[index] + valor);
+  imageData.data[index + 1] = (imageData.data[index + 1] + valor);
+  imageData.data[index + 2] = (imageData.data[index + 2] + valor);
+  ctx.putImageData(imageData, 0, 0);
+};
