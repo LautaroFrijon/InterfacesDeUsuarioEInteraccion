@@ -15,8 +15,8 @@ document.getElementById("file").onchange = function (e) {
       for (var x = 0; x < canvas.width; x++) {
         for (var y = 0; y < canvas.height; y++) {
           //gris(imageData, x, y);
-          //binarizacion(imageData, x, y);
-          sepia(imageData, x, y);
+          //negativo(imageData, x, y);
+          //brillo(imageData, x, y);
         }
       }
     };
@@ -33,13 +33,13 @@ function dibujarImg(imagen) {
 //El metodo de redimensionar imagen lo vamos a hacer calculando el ratio de la misma
 //y comparandolo si es mayor o menor a 1.
 function redimensionarImagen(imagen, canvas) {
-  if(imagen.width > canvas.width && imagen.height > canvas.height){
+  if (imagen.width > canvas.width) {
     imagen.width = imagen.width - (imagen.width - canvas.width);
     imagen.height = imagen.height - (imagen.height - canvas.height);
   }
-  else if(imagen.height < canvas.height){
-    imagen.height = imagen.height - (imagen.height - canvas.height);
-    imagen.width = imagen.width - (imagen.width - canvas.width);
+  else if (imagen.height < canvas.height) {
+    imagen.height = imagen.height + (imagen.height - canvas.height);
+    imagen.width = imagen.width + (imagen.width - canvas.width);
   }
 }
 
@@ -51,7 +51,7 @@ function binarizacion(imageData, x, y) {
   index = (x + y * imageData.width) * 4; //agarro el índice de la matriz // covnieron en matriz
   //sacp promedio de los r g b
   let promedio = (imageData.data[index + 0] + imageData.data[index + 1] + imageData.data[index + 2]) / 3;
-  if(promedio > (255/2)){
+  if (promedio > (255 / 2)) {
     promedio = 255;
   } else {
     promedio = 0;
@@ -88,8 +88,22 @@ function negativo(imageData, x, y) {
   ctx.putImageData(imageData, 0, 0);
 }
 
-function sepia(imageData, x, y){
-  let index = (x + y * imageData.width)*4;
+// este filtro lo resolvimos aumentando el valor rgb en cada iteracion
+// en todos por igual
+function brillo(imageData, x, y) {
+  var valor = 70;
+  //parseInt(document.getElementById("brillo").value);
+  //ctx.putImageData(bkp_img, 0, 0);
+  //imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  index = (x + y * imageData.width) * 4; //agarro el índice de la matriz // covnieron en matriz
+  imageData.data[index] = (imageData.data[index] + valor);
+  imageData.data[index + 1] = (imageData.data[index + 1] + valor);
+  imageData.data[index + 2] = (imageData.data[index + 2] + valor);
+  ctx.putImageData(imageData, 0, 0);
+};
+
+function sepia(imageData, x, y) {
+  let index = (x + y * imageData.width) * 4;
   imageData.data[index + 0] = (imageData.data[index + 0] * .393) + (imageData.data[index + 1] * .769) + (imageData.data[index + 2] * .189);
   imageData.data[index + 1] = (imageData.data[index + 0] * .349) + (imageData.data[index + 1] * .686) + (imageData.data[index + 2] * .168);
   imageData.data[index + 2] = (imageData.data[index + 0] * .272) + (imageData.data[index + 1] * .534) + (imageData.data[index + 2] * .131);
