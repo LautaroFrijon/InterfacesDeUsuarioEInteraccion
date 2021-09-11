@@ -14,33 +14,57 @@ document.getElementById("file").onchange = function (e) {
       for (var x = 0; x < canvas.width; x++) {
         for (var y = 0; y < canvas.height; y++) {
           //gris(imageData, x, y);
-          negativo(imageData, x, y);
+          //binarizacion(imageData, x, y);
+          sepia(imageData, x, y);
         }
       }
     };
   };
 };
+
 function dibujarImg(imagen) {
   ctx.drawImage(imagen, 0, 0, 600, 600);
 }
 
+//Calculo el ratio, si es mayor a 1 la imagen es chica, y si es menor a uno es muy grande, 
+//cuando es muy grande se multiplica la imagen por el ratio
 
+//El metodo de redimensionar imagen lo vamos a hacer calculando el ratio de la misma
+//y comparandolo si es mayor o menor a 1.
 function redimensionarImagen(imagen, canvas) {
-  //cuando la imagen es mas chica q el canvas
-  if (imagen.width < canvas.width && imagen.height < canvas.height) {
+  if(imagen.width > canvas.width){
     imagen.width = imagen.width - (imagen.width - canvas.width);
     imagen.height = imagen.height - (imagen.height - canvas.height);
   }
-  if (imagen.width > canvas.width && imagen.height > canvas.height) {
-    imagen.width = imagen_ejemplo.width + (imagen_ejemplo.width - canvas.width);
-    imagen.height = imagen_ejemplo.height + (imagen_ejemplo.height - canvas.height);
+  else if(imagen.height > canvas.height){
+    imagen.height = imagen.height - (imagen.height - canvas.height);
+    imagen.width = imagen.width - (imagen.width - canvas.width);
   }
 }
 
-//calcula el tono de gris y si es mayor que 255/2 pones 255, si no 0 
-
 //variable brillo 
 
+//Calculamos el promedio de los colores y si es mayor 255/2, se le pone 255 directamente,
+//en caso contrario, se lo pone en 0.
+function binarizacion(imageData, x, y) {
+  index = (x + y * imageData.width) * 4; //agarro el índice de la matriz // covnieron en matriz
+  //sacp promedio de los r g b
+  let promedio = (imageData.data[index + 0] + imageData.data[index + 1] + imageData.data[index + 2]) / 3;
+  if(promedio > (255/2)){
+    promedio = 255;
+  } else {
+    promedio = 0;
+  }
+  imageData.data[index + 0] = promedio;
+  imageData.data[index + 1] = promedio;
+  imageData.data[index + 2] = promedio;
+  //coloco la imagen en el canvas
+  ctx.putImageData(imageData, 0, 0);
+}
+
+//Este filtro lo hicimos intentando hacer el de binarizacion.
+//Sacamos el promedio de los tres colores, pero en vez de fijarnos si es mas o menos chicos que
+//255/2, directamente ponemos el promedio y nos da una escala de gris.
 function gris(imageData, x, y) {
   index = (x + y * imageData.width) * 4; //agarro el índice de la matriz // covnieron en matriz
   //sacp promedio de los r g b
@@ -52,12 +76,21 @@ function gris(imageData, x, y) {
   ctx.putImageData(imageData, 0, 0);
 }
 
+//En este filtro, lo que se hace es, hacer 
 function negativo(imageData, x, y) {
   index = (x + y * imageData.width) * 4; //agarro el índice de la matriz // covnieron en matriz
-  //sacp promedio de los r g b
+  //saco promedio de los r g b
   imageData.data[index + 0] = 255 - imageData.data[index + 0];
   imageData.data[index + 1] = 255 - imageData.data[index + 1];
   imageData.data[index + 2] = 255 - imageData.data[index + 2];
   //coloco la imagen en el canvas
+  ctx.putImageData(imageData, 0, 0);
+}
+
+function sepia(imageData, x, y){
+  let index = (x + y * imageData.width)*4;
+  imageData.data[index + 0] = (imageData.data[index + 0] * .393) + (imageData.data[index + 1] * .769) + (imageData.data[index + 2] * .189);
+  imageData.data[index + 1] = (imageData.data[index + 0] * .349) + (imageData.data[index + 1] * .686) + (imageData.data[index + 2] * .168);
+  imageData.data[index + 2] = (imageData.data[index + 0] * .272) + (imageData.data[index + 1] * .534) + (imageData.data[index + 2] * .131);
   ctx.putImageData(imageData, 0, 0);
 }
