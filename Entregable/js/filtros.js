@@ -10,10 +10,11 @@ document.getElementById("file").onchange = function (e) {
     redimensionarImagen(imagen_ejemplo, canvas);
     imagen_ejemplo.onload = function () {
       dibujarImg(imagen_ejemplo);
-      var imageData = ctx.getImageData(0, 0, imagen_ejemplo.width, imagen_ejemplo.height);
+      var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
 
       for (var x = 0; x < canvas.width; x++) {
         for (var y = 0; y < canvas.height; y++) {
+          sepia(imageData, x, y);
           //gris(imageData, x, y);
           //negativo(imageData, x, y);
           //brillo(imageData, x, y);
@@ -103,9 +104,9 @@ function brillo(imageData, x, y) {
 };
 
 function sepia(imageData, x, y) {
-  let index = (x + y * imageData.width) * 4;
-  imageData.data[index + 0] = (imageData.data[index + 0] * .393) + (imageData.data[index + 1] * .769) + (imageData.data[index + 2] * .189);
-  imageData.data[index + 1] = (imageData.data[index + 0] * .349) + (imageData.data[index + 1] * .686) + (imageData.data[index + 2] * .168);
-  imageData.data[index + 2] = (imageData.data[index + 0] * .272) + (imageData.data[index + 1] * .534) + (imageData.data[index + 2] * .131);
+  index = (x + y * imageData.width) * 4;
+  imageData.data[index] = (imageData.data[index] * .393) + (imageData.data[index + 1] * .769) + (imageData.data[index + 2] * .189);
+  imageData.data[index + 1] = (imageData.data[index] * .349) + (imageData.data[index + 1] * .686) + (imageData.data[index + 2] * .168);
+  imageData.data[index + 2] = (imageData.data[index] * .272) + (imageData.data[index + 1] * .534) + (imageData.data[index + 2] * .131);
   ctx.putImageData(imageData, 0, 0);
 }
