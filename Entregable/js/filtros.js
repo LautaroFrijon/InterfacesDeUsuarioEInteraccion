@@ -1,6 +1,7 @@
 var imagen_ejemplo = new Image();
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+
 document.getElementById("file").onchange = function (e) {
   let reader = new FileReader();
   reader.readAsDataURL(e.target.files[0]);
@@ -32,11 +33,11 @@ function dibujarImg(imagen) {
 //El metodo de redimensionar imagen lo vamos a hacer calculando el ratio de la misma
 //y comparandolo si es mayor o menor a 1.
 function redimensionarImagen(imagen, canvas) {
-  if(imagen.width > canvas.width){
+  if(imagen.width > canvas.width && imagen.height > canvas.height){
     imagen.width = imagen.width - (imagen.width - canvas.width);
     imagen.height = imagen.height - (imagen.height - canvas.height);
   }
-  else if(imagen.height > canvas.height){
+  else if(imagen.height < canvas.height){
     imagen.height = imagen.height - (imagen.height - canvas.height);
     imagen.width = imagen.width - (imagen.width - canvas.width);
   }
