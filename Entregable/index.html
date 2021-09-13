@@ -6,18 +6,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
+  <body style="background-color: black;">
     <div>
-      <canvas id="canvas" height="800" width="800" style="color: #000000"> </canvas>
+      <canvas id="canvas" height="800" width="800"> </canvas>
+      <button id="lapiz"> Lapiz </button>
+      <button id="goma"> Goma </button>
     </div>
     <div>
       <input type="file" id="file" />
     </div>
     <div id="filtros">
-      <button id="binarizacion">blanco y negro</button>
-      <button id="brillo">brillo</button>
-      <button id="sepia">sepia</button> 
-      <button id="gris">gris</button>
+      <button id="binarizacion">Blanco y negro</button>
+      <button id="brillo">Brillo</button>
+      <button id="sepia">Sepia</button> 
+      <button id="gris">Gris</button>
+      <button id="negativo">Negativo</button>
+      <button id="blur">Blur</button>
     </div>
     <script src="js/filtros.js"></script>
     <script src="js/lapizYGoma.js"></script>

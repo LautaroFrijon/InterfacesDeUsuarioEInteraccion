@@ -1,7 +1,7 @@
 "use strict"
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-ctx.fillStyle = "#FF0000";
+ctx.fillStyle = "#FFFFFF";
 ctx.fillRect(0, 0, 800, 800);
 var imagen = document.getElementById('file').addEventListener('change', cargarImagen, false);
 
@@ -12,12 +12,22 @@ document.getElementById("binarizacion").addEventListener("click", function () {
 document.getElementById("brillo").addEventListener("click", function () {
   brillo();
 });
+
 document.getElementById("sepia").addEventListener("click", function () {
-  sepia()
+  sepia();
 });
 
+document.getElementById("negativo").addEventListener("click", function () {
+  negativo();
+});
 
-document.getElementById("gris").addEventListener("click", gris());
+document.getElementById("gris").addEventListener("click", function(){
+  gris();
+});
+
+document.getElementById("blur").addEventListener("click", function(){
+  blur();
+})
 
 function cargarImagen(e) {
   var reader = new FileReader();
@@ -31,7 +41,6 @@ function cargarImagen(e) {
   }
   reader.readAsDataURL(e.target.files[0]);
 }
-
 
 function dibujarImg(imagen) {
 
@@ -83,7 +92,6 @@ function binarizacion() {
 
 }
 
-
 //Este filtro lo hicimos intentando hacer el de binarizacion.
 //Sacamos el promedio de los tres colores, pero en vez de fijarnos si es mas o menos chicos que
 //255/2, directamente ponemos el promedio y nos da una escala de gris.
@@ -92,7 +100,7 @@ function gris() {
   for (var x = 0; x < canvas.width; x++) {
     for (var y = 0; y < canvas.height; y++) {
       var index = (x + y * imageData.width) * 4; //agarro el índice de la matriz // covnieron en matriz
-      //sacp promedio de los r g b
+      //saco promedio de los r g b
       let promedio = (imageData.data[index + 0] + imageData.data[index + 1] + imageData.data[index + 2]) / 3;
       imageData.data[index + 0] = promedio;
       imageData.data[index + 1] = promedio;
@@ -105,11 +113,16 @@ function gris() {
 
 //En este filtro, lo que se hace es, hacer 
 function negativo(imageData, x, y) {
-  var index = (x + y * imageData.width) * 4; //agarro el índice de la matriz // covnieron en matriz
-  //saco promedio de los r g b
-  imageData.data[index + 0] = 255 - imageData.data[index + 0];
-  imageData.data[index + 1] = 255 - imageData.data[index + 1];
-  imageData.data[index + 2] = 255 - imageData.data[index + 2];
+  var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  for (var x = 0; x < canvas.width; x++) {
+    for (var y = 0; y < canvas.height; y++) {
+      var index = (x + y * imageData.width) * 4; //agarro el índice de la matriz // covnieron en matriz
+      //saco promedio de los r g b
+      imageData.data[index + 0] = 255 - imageData.data[index + 0];
+      imageData.data[index + 1] = 255 - imageData.data[index + 1];
+      imageData.data[index + 2] = 255 - imageData.data[index + 2];
+    }
+  }
   //coloco la imagen en el canvas
   ctx.putImageData(imageData, 0, 0);
 }
@@ -145,4 +158,23 @@ function sepia() {
     }
   }
   ctx.putImageData(imageData, 0, 0);
+}
+
+function blur(){
+  let imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  for (var x = 0; x < canvas.width; x++) {
+    for (var y = 0; y < canvas.height; y++) {
+      let index = (x + y * imageData.width)*4;
+      imageData.data[index] = calcularPromedioNumerosAlrededor(imageData, index, x, y);
+      imageData.data[index + 1] = calcularPromedioNumerosAlrededor(imageData, index, x, y);
+      imageData.data[index + 2] = calcularPromedioNumerosAlrededor(imageData, index, x, y);
+    }
+  }
+  ctx.putImageData(imageData, 0, 0);
+}
+
+function calcularPromedioNumerosAlrededor(imageData, index, x, y){
+  let promedio;
+  promedio = (imageData.data[x, y] + imageData.data[(x+1), y] + imageData.data[(x-1), y] + imageData.data[x, (y+1)] + imageData.data[x, (y-1)] + imageData.data[(x-1), (y-1)] + imageData.data[x+1, y+1] + imageData.data[(x-1), (y+1)] + imageData.data[(x+1), (y-1)]) / 9;
+  return promedio; 
 }
