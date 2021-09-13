@@ -15,9 +15,10 @@ document.getElementById("brillo").addEventListener("click", function () {
 document.getElementById("sepia").addEventListener("click", function () {
   sepia()
 });
+document.getElementById("saturacion").addEventListener("click", function () {
+  saturacion()
+});
 
-
-document.getElementById("gris").addEventListener("click", gris());
 
 function cargarImagen(e) {
   var reader = new FileReader();
@@ -133,6 +134,24 @@ function brillo() {
   }
   ctx.putImageData(imageData, 0, 0);
 };
+
+function saturacion() {
+  let valor = 70;
+  var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  //obtiene un facto de referencia para ir modificando la saturacion
+  var factor = (259 * (valor + 255)) / (255 * (259 - valor));
+  for (var x = 0; x < canvas.width; x++) {
+    for (var y = 0; y < canvas.height; y++) {
+      let index = (x + y * imageData.width) * 4; //agarro el índice de la matriz // covnieron en matriz
+      //Cálculo del valor de cada píxel tras aplicar el factor anterior.
+      imageData.data[index] = factor * (imageData.data[index] - 128) + 128;
+      imageData.data[index + 1] = factor * (imageData.data[index + 1] - 128) + 128;
+      imageData.data[index + 2] = factor * (imageData.data[index + 2] - 128) + 128;
+    }
+  }
+  ctx.putImageData(imageData, 0, 0);
+};
+
 
 function sepia() {
   var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
