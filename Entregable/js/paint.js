@@ -2,6 +2,10 @@
 let imagen_ejemplo = new Image();
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
+ctx.fillStyle = '#FFFFFF';
+ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+
 //ESTA FUNCION ME DEVUELVE
 //A DONDE ESTA EL CANVAS 
 //CON RESPECTO A LA PANTALLA
@@ -18,10 +22,15 @@ function defcolor(c) {
 }
 
 function defgrosor(g) {
-    console.log(g);
     grosor = g;
 }
 
+
+document.getElementById("goma").addEventListener("click", function () {
+    color = 'white';
+})
+
+//cuando baja y empieza a dibujar
 canvas.addEventListener('mousedown', function (e) {
     //ressto el clientex - rect parea saber donde esta el canvas dentro de la pantalla
     x = e.clientX - rect.left;
@@ -62,6 +71,7 @@ function dibujar(x1, y1, x2, y2) {
     ctx.strokeStyle = color;
     ctx.lineWidth = grosor;
     ctx.moveTo(x1, y1);
+    //crea la linea desde del ultimo punto es decir  (x1,y1) a (x2,y2)
     ctx.lineTo(x2, y2);
     ctx.stroke();
     ctx.closePath();

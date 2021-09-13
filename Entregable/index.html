@@ -6,23 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
   </head>
-  <body>
+  <body style="background-color:black;">
     <div>
-      <canvas id="canvas" height="800" width="800" style="color: #000000"> </canvas>
+      <canvas id="canvas"  height="800" width="800"> </canvas>
       <input type="color" id="color" oninput="defcolor(this.value);" name="" id="">
-      <input type="range" id="grosor" oninput="defgrosor(this.value);" min="1" max="5" value="1">
+      <input type="range" id="grosor" oninput="defgrosor(this.value);" min="1" max="30" value="1">
       <button id="clearCanvas">limpiar</button>
+      <button id="goma">goma</button>
     </div>
     <div>
       <input type="file" id="file" />
     </div>
     <div id="filtros">
-      <button id="binarizacion">blanco y negro</button>
-      <button id="brillo">brillo</button>
-      <button id="sepia">sepia</button> 
-      <button id="gris">gris</button>
-      <button id="saturacion">saturacion</button>
-
+      <button id="binarizacion">Blanco y negro</button>
+      <button id="brillo">Brillo</button>
+      <button id="sepia">Sepia</button> 
+      <button id="gris">Gris</button>
+      <button id="negativo">Negativo</button>
+      <button id="blur">Blur</button>
     </div>
 
     <script src="js/paint.js"></script>
