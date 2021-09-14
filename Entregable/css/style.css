@@ -1,0 +1,22 @@
+.body{
+    background-color: lightblue;
+}
+
+#herramientas{
+    display: flexbox;
+    justify-content: end;
+    padding: 10px;
+    margin: 10px;
+}
+
+.row{
+    display: flexbox;
+    justify-content: flex-end;
+}
+
+#imagen{
+    display: flexbox;
+    margin-right: 150px;
+    margin-left: 0%;
+}
+
