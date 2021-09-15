@@ -2,6 +2,11 @@
     background-color: rgb(193, 205, 209);
 }
 
+#grosor{
+    background-color: black;
+    color: black;
+}
+
 #herramientas{
     display: flexbox;
     justify-content: end;
@@ -43,3 +48,43 @@
       margin-top: 15px;
       border:none;
   }
+
+#binarizacion{
+    margin: 10px;
+    width: 100px;
+}
+#brillo{
+    margin: 10px;
+    width: 100px;
+
+}
+#sepia{
+    margin: 10px;
+    width: 100px;
+
+}
+#gris{
+    margin: 10px;
+    width: 100px;
+
+}
+#negativo{
+    margin: 10px;
+    width: 100px;
+
+}
+#blur{
+    margin: 10px;
+    width: 100px;
+
+}
+#saturacion{
+    width: 100px;
+    margin: 10px;
+}
+
+.paint{
+    background-color: rgb(0, 0, 0); /* Blue background */
+    width: 100px;
+    height: 100px;
+}

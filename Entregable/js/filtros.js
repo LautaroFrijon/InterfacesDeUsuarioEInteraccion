@@ -114,16 +114,6 @@ function dibujar(x1, y1, x2, y2) {
   ctx.closePath();
 }
 
-function borrar() {
-  ctx.beginPath();
-  ctx.strokeStyle = 'white';
-  ctx.lineWidth = grosor;
-  ctx.moveTo(x1, y1);
-  ctx.lineTo(x2, y2);
-  ctx.stroke();
-  ctx.closePath();
-}
-
 document.getElementById('clearCanvas').addEventListener("click", function () {
   ctx.fillStyle = '#F8F8FF'
   ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -231,9 +221,6 @@ function negativo(imageData, x, y) {
 function brillo() {
   var valor = 70;
   var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-
-  //parseInt(document.getElementById("brillo").value);
-  //ctx.putImageData(bkp_img, 0, 0);
   for (var x = 0; x < canvas.width; x++) {
     for (var y = 0; y < canvas.height; y++) {
       //imgData = ctx.getImageData(0, 0, canvas.width, canvas.height);
@@ -249,7 +236,7 @@ function brillo() {
 function saturacion() {
   let valor = 70;
   var imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-  //obtiene un facto de referencia para ir modificando la saturacion
+  //obtiene un factor de referencia para ir modificando la saturacion
   var factor = (259 * (valor + 255)) / (255 * (259 - valor));
   for (var x = 0; x < canvas.width; x++) {
     for (var y = 0; y < canvas.height; y++) {
