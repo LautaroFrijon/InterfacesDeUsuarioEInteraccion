@@ -1,5 +1,5 @@
 .body{
-    background-color: lightblue;
+    background-color: rgb(193, 205, 209);
 }
 
 #herramientas{
@@ -20,3 +20,26 @@
     margin-left: 0%;
 }
 
+.btn {
+    background-color: rgb(0, 0, 0); /* Blue background */
+    border: none; /* Remove borders */
+    color: white; /* White text */
+    padding: 12px 16px; /* Some padding */
+    font-size: 50px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+  }
+  
+  /* Darker background on mouse-over */
+  .btn:hover {
+    background-color: rgb(0, 0, 0); /* Blue background */
+  }
+
+  .range {
+      background-color: black;
+      color: black;
+  }
+
+  .canvas{
+      margin-top: 15px;
+      border:none;
+  }

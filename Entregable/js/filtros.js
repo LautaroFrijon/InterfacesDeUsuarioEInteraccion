@@ -1,7 +1,7 @@
 "use strict"
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
-ctx.fillStyle = '#FFFFFF';
+ctx.fillStyle = 'white';
 ctx.fillRect(0, 0, canvas.width, canvas.height);
 var imagen = document.getElementById('file').addEventListener('change', cargarImagen, false);
 
@@ -34,16 +34,16 @@ document.getElementById("blur").addEventListener("click", function () {
   blur();
 })
 
-document.getElementById("guardar").addEventListener("click", function(){
+document.getElementById("guardar").addEventListener("click", function () {
   var link = window.document.createElement('a'),
-        url = canvas.toDataURL(),
-        filename = 'imagen.jpg';
-    link.setAttribute('href', url);
-    link.setAttribute('download', filename);
-    link.style.visibility = 'hidden';
-    window.document.body.appendChild(link);
-    link.click();
-    window.document.body.removeChild(link);
+    url = canvas.toDataURL(),
+    filename = 'imagen.jpg';
+  link.setAttribute('href', url);
+  link.setAttribute('download', filename);
+  link.style.visibility = 'hidden';
+  window.document.body.appendChild(link);
+  link.click();
+  window.document.body.removeChild(link);
 })
 
 //Parte Paint
@@ -60,73 +60,73 @@ let color = 'black';
 let grosor = 1;
 
 function defcolor(c) {
-    color = c;
+  color = c;
 }
 
 function defgrosor(g) {
-    grosor = g;
+  grosor = g;
 }
 
 document.getElementById("goma").addEventListener("click", function () {
-    color = 'white';
+  color = 'white';
 })
 
 //cuando baja y empieza a dibujar
 canvas.addEventListener('mousedown', function (e) {
-    //ressto el clientex - rect parea saber donde esta el canvas dentro de la pantalla
-    x = e.clientX - rect.left;
-    y = e.clientY - rect.top;
-    dibujando = true;
+  //ressto el clientex - rect parea saber donde esta el canvas dentro de la pantalla
+  x = e.clientX - rect.left;
+  y = e.clientY - rect.top;
+  dibujando = true;
 })
 
 canvas.addEventListener('mousemove', function (e) {
-    if (dibujando === true) {
-        //le paso el punto inicial donde hice click la primer vez(x,y)
-        //y los parametros sigueinte vuelvo a calcular donde estoy en este momento
-        dibujar(x, y, e.clientX - rect.left, e.clientY - rect.top)
-        //actualizo x e y con el punto donde me encuentro
-        x = e.clientX - rect.left;
-        y = e.clientY - rect.top;
-    }
+  if (dibujando === true) {
+    //le paso el punto inicial donde hice click la primer vez(x,y)
+    //y los parametros sigueinte vuelvo a calcular donde estoy en este momento
+    dibujar(x, y, e.clientX - rect.left, e.clientY - rect.top)
+    //actualizo x e y con el punto donde me encuentro
+    x = e.clientX - rect.left;
+    y = e.clientY - rect.top;
+  }
 })
 
 //suelta el click
 canvas.addEventListener('mouseup', function (e) {
-    if (dibujando == true) {
-        //dibujo la linea
-        dibujar(x, y, e.clientX - rect.left, e.clientY - rect.top);
-        //reseto valores
-        x = 0;
-        y = 0;
-        dibujando = false;
-    }
+  if (dibujando == true) {
+    //dibujo la linea
+    dibujar(x, y, e.clientX - rect.left, e.clientY - rect.top);
+    //reseto valores
+    x = 0;
+    y = 0;
+    dibujando = false;
+  }
 })
 
 function dibujar(x1, y1, x2, y2) {
-    //indico nueva ruta
-    ctx.beginPath();
-    ctx.strokeStyle = color;
-    ctx.lineWidth = grosor;
-    ctx.moveTo(x1, y1);
-    //crea la linea desde del ultimo punto es decir  (x1,y1) a (x2,y2)
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-    ctx.closePath();
+  //indico nueva ruta
+  ctx.beginPath();
+  ctx.strokeStyle = color;
+  ctx.lineWidth = grosor;
+  ctx.moveTo(x1, y1);
+  //crea la linea desde del ultimo punto es decir  (x1,y1) a (x2,y2)
+  ctx.lineTo(x2, y2);
+  ctx.stroke();
+  ctx.closePath();
 }
 
 function borrar() {
-    ctx.beginPath();
-    ctx.strokeStyle = 'white';
-    ctx.lineWidth = grosor;
-    ctx.moveTo(x1, y1);
-    ctx.lineTo(x2, y2);
-    ctx.stroke();
-    ctx.closePath();
+  ctx.beginPath();
+  ctx.strokeStyle = 'white';
+  ctx.lineWidth = grosor;
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.stroke();
+  ctx.closePath();
 }
 
 document.getElementById('clearCanvas').addEventListener("click", function () {
-    ctx.fillStyle = '#F8F8FF'
-    ctx.fillRect(0, 0, canvas.width, canvas.height);
+  ctx.fillStyle = '#F8F8FF'
+  ctx.fillRect(0, 0, canvas.width, canvas.height);
 })
 
 //Cargar imagen desde el disco
@@ -143,7 +143,7 @@ function cargarImagen(e) {
 }
 
 function dibujarImg(imagen) {
-  ctx.drawImage(imagen, 0, 0, 800, 800);
+  ctx.drawImage(imagen, 0, 0, canvas.width, canvas.height);
   redimensionarImagen(imagen, canvas)
 
 }
