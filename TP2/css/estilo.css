@@ -1,0 +1,17 @@
+#tablero{
+    display: flex;
+    justify-content: center;
+    padding: 15px;
+}
+
+#fichasjugador1{
+    display:flex;
+    justify-content: left;
+}
+
+#fichasjugador2{
+    display: flex;
+    justify-content: right;
+    
+}
+
