@@ -17,7 +17,7 @@ class Ficha {
         else if (color === 'j2')
             this.imagen.src = '/TP2/img/ficha.png';
         else if (color === 'ranuras')
-            this.imagen.src = '/TP2/img/ficha.png';
+            this.imagen.src = '/TP2/img/negro2.png';
     }
 
     getNombre() {
@@ -47,6 +47,13 @@ class Ficha {
     setEstado(estado) {
         this.estado = estado;
     }
+    isClicked(x, y) {
+        var xLayer = x - this.x;
+        var yLayer = y - this.y;
+        return Math.sqrt(xLayer * xLayer + yLayer * yLayer) < this.radio;
+    }
+
+
     dibujar() {
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, this.radio, 0, Math.PI * 2);
@@ -54,6 +61,7 @@ class Ficha {
         this.ctx.fill();
         this.ctx.closePath();
         this.ctx.drawImage(this.imagen, this.x - this.radio - 6, this.y - this.radio - 6);
+
     }
 
 }
