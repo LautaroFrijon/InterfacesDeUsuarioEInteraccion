@@ -40,9 +40,6 @@ class Juego {
         this.tablero.dibujarTablero();
     }
 
-    //llama al dibujar tablero 
-    //setea las fichas
-    //setea el primer turno
     prepareJuego() {
         this.tablero.dibujarTablero();
         this.setFichas();
@@ -57,12 +54,12 @@ class Juego {
 
     marcarTurnoActual() {
         if (this.turno === 1) {
-            document.getElementById('J1').classList.add('turno-actual');
-            document.getElementById('J2').classList.remove('turno-actual');
+            document.getElementById('turno').innerHTML = "JUGADOR 1"
         }
         else if (this.turno === 2) {
-            document.getElementById('J2').classList.add('turno-actual');
-            document.getElementById('J1').classList.remove('turno-actual');
+
+            document.getElementById('turno').innerHTML = "JUGADOR 2"
+
         }
         else {
             document.getElementById('J1').classList.remove('turno-actual');
@@ -100,5 +97,41 @@ class Juego {
         this.fichaClickeada = false;
     }
 
+    insertarFicha(x, y) {
 
+        if (this.tablero.pudoInsertarFicha(x, y, this.fichaActual)) {
+            this.cantidadFichas--;
+            if (this.hayGanador()) {
+                var mensajeGanador = document.getElementById('info-ganador');
+                if (this.turno === 1)
+                    mensajeGanador.innerHTML = 'Gano el JUGADOR 1';
+                else
+                    mensajeGanador.innerHTML = 'Gano el JUGADOR 2';
+                mensajeGanador.classList.remove('oculto');
+                this.juegoFinalizado = true;
+            }
+            else if (this.cantidadFichas === 0) {
+                this.juegoFinalizado = true;
+                var alerta = document.getElementById('info-empate');
+                alerta.classList.remove('oculto');
+            }
+            else
+                this.turno = (this.turno === 1) ? 2 : 1;
+        }
+        else {
+            this.fichaActual.x = this.posInicialX;
+            this.fichaActual.y = this.posInicialY;
+            this.fichas.push(this.fichaActual);
+        }
+        this.resetFichaClickeada();
+        this.prepareJuego();
+    }
+
+    hayGanador() {
+        var hayGanador = false;
+        if (this.tablero.comprobarVertical() || this.tablero.comprobarHorizontal() ||
+            this.tablero.comprobarHorizontal() || this.tablero.comprobarDiagonal())
+            hayGanador = true;
+        return hayGanador;
+    }
 }

@@ -1,39 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/TP2/css/estilo.css">
-    <title>Entregable2</title>
-</head>
-<body>
-    <header>
-        <h1>Cuatro en linea</h1>
-        <div id="botonComenzar">
-            <button>Comenzar</button>
-        </div>
-    </header>
-    <div>
-        <div id="J2">
-            <h2>Fichas del jugador 1</h2>
-            <div id="fichasJ1">
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href= "/TP2/css/estilo.css">
+    </head>
+    <body>
+        <div class="row header">
+            <div id="J1" class="jugadores offset-md-1 col-md-2 header-acciones alert alert-info">
+                <h2 id="nombreJ1">JUGADOR 1</h2>
+            </div>
+            <div class="header-acciones col-md-4 offset-md-1">
+                <div class="row">
+                    <div class="col-md-12 header-page">
+                        <h2 id="turno">JUEGA:</h2>
 
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 header-page">
+                        <button id="botonComenzar"><svg xmlns="http://www.w3.org/2000/svg" width="30"  height="30" fill="currentColor" class="bi bi-caret-right-square" viewBox="0 0 16 16">
+                            <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                            <path d="M5.795 12.456A.5.5 0 0 1 5.5 12V4a.5.5 0 0 1 .832-.374l4.5 4a.5.5 0 0 1 0 .748l-4.5 4a.5.5 0 0 1-.537.082z"/>
+                          </svg></button> 
+                          <button id="botonRetry"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-arrow-counterclockwise" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd" d="M8 3a5 5 0 1 1-4.546 2.914.5.5 0 0 0-.908-.417A6 6 0 1 0 8 2v1z"/>
+                            <path d="M8 4.466V.534a.25.25 0 0 0-.41-.192L5.23 2.308a.25.25 0 0 0 0 .384l2.36 1.966A.25.25 0 0 0 8 4.466z"/>
+                          </svg></button> 
+                    </div>
+                    
+                </div>
+            </div>
+            <div id="J2" class="jugadores offset-md-1 col-md-2 header-acciones alert alert-info">
+                <h2>Jugador 2</h2>
             </div>
         </div>
-        
-        <div id="J1">
-            <h2 class="titulofichas">Fichas del jugador 2</h2>
-            <div id="fichasJ2">
-                
+        <div class="row info">
+            <div id="info-ganador" class="alert mensaje-ganador alert-success oculto offset-md-1 col-md-10">
+            </div>
+            <div id="info-empate" class=" alert mensaje-ganador alert-danger oculto offset-md-1 col-md-10">
+                Hay empate
             </div>
         </div>
 
-        <div id="tablero">
-            <canvas id="canvas"  width="1100" height="550">
-            </canvas>
+        <div class="row">
+            <div class="col-md-8 offset-md-1">
+                <canvas id="tablero" class="bloqueado" width="1100" height="550"></canvas>
+            </div>
         </div>
-    </div>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="/TP2/js/jugador.js"></script>
     <script src="/TP2/js/ficha.js"></script>
     <script src="/TP2/js/tablero.js"></script>

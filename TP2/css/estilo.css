@@ -1,18 +1,41 @@
-#tablero{
-    display: flex;
-    justify-content: center;
-    padding: 15px;
+body{
+    background-color:black;
 }
 
-#fichasjugador1{
-    display:flex;
-    justify-content: left;
+h1, h2{
+    font-family:'';
+    font-weight: bold;
 }
 
-#fichasjugador2{
-    display: flex;
-    justify-content: right;
-    
+.header{
+    margin-top: 3px;
+}
+
+.header-page{
+    text-align: center;
+    margin-bottom: -6px;
+}
+
+.header-acciones{
+    text-align: center;
+}
+
+.jugadores.turno-actual {
+    box-shadow: 4px 4px #00c9d1; 
+    color: #00c9d1;
+}
+
+.info{
+    margin-bottom: 0px;
+}
+
+#info-ganador, #info-empate{
+    width: 100%;
+}
+
+.mensaje-ganador{
+    text-align: center;
+    margin-top: 5px;
 }
 
 #tablero{
@@ -20,3 +43,15 @@
     margin-left: 5px;
 }
 
+
+
+.oculto {
+    display: none;
+}
+
+#botonComenzar,#botonRetry{
+    background-color: red;
+}
+#turno{
+    color: white;
+}

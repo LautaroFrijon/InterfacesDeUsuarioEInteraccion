@@ -1,5 +1,4 @@
 class Ficha {
-
     constructor(x, y, color, jugador) {
         this.x = x;
         this.y = y;
@@ -10,14 +9,20 @@ class Ficha {
         this.getSrc(color)
     }
 
-
     getSrc(color) {
         if (color === 'j1')
-            this.imagen.src = '/TP2/img/ficha.png';
+            this.imagen.src = '/TP2/img/ficha1.png';
         else if (color === 'j2')
-            this.imagen.src = '/TP2/img/ficha.png';
+            this.imagen.src = '/TP2/img/ficha2.png';
         else if (color === 'ranuras')
             this.imagen.src = '/TP2/img/negro2.png';
+    }
+
+    getJugador() {
+        if (this.jugador === 0)
+            return this.jugador;
+        else
+            return this.jugador.getNroJugador();
     }
 
     getNombre() {
@@ -47,12 +52,12 @@ class Ficha {
     setEstado(estado) {
         this.estado = estado;
     }
+
     isClicked(x, y) {
         var xLayer = x - this.x;
         var yLayer = y - this.y;
         return Math.sqrt(xLayer * xLayer + yLayer * yLayer) < this.radio;
     }
-
 
     dibujar() {
         this.ctx.beginPath();
@@ -63,5 +68,4 @@ class Ficha {
         this.ctx.drawImage(this.imagen, this.x - this.radio - 6, this.y - this.radio - 6);
 
     }
-
 }

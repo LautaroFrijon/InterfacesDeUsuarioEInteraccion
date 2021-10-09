@@ -1,36 +1,48 @@
+document.addEventListener("DOMContentLoaded", function (event) {
 
-var iniciarjuego = document.getElementById('botonComenzar');
-var canvas = document.getElementById('canvas');
-let juego = new Juego(canvas);
+    var canvas = document.getElementById('tablero');
+    var iniciarJuego = document.getElementById('botonComenzar');
+    var retry = document.getElementById('botonRetry');
+
+    var juego = new Juego(canvas);
 
 
-iniciarjuego.addEventListener("click", function () {
-
-    juego = new Juego(canvas);
-    juego.prepareJuego();
-    initEvents();
-
-});
-
-function initEvents() {
-    canvas.onmousedown = function (e) {
-        var x = e.layerX - e.currentTarget.offsetLeft;
-        var y = e.layerY - e.currentTarget.offsetTop;
-        juego.isClickedFicha(x, y);
+    iniciarJuego.onclick = function () {
+        juego = new Juego(canvas);
+        juego.prepareJuego();
+        initEvents();
+        document.getElementById('info-ganador').classList.add('oculto');
+        document.getElementById('info-empate').classList.add('oculto');
     }
 
-    canvas.onmousemove = function (e) {
-        var x = e.layerX - e.currentTarget.offsetLeft;
-        var y = e.layerY - e.currentTarget.offsetTop;
-        if (juego.hayFichaClickeada())
-            juego.moveFicha(x, y);
+    retry.onclick = function () {
+        juego = new Juego(canvas);
+        juego.prepareJuego();
+        initEvents();
+        document.getElementById('info-ganador').classList.add('oculto');
+        document.getElementById('info-empate').classList.add('oculto');
     }
 
-    canvas.onmouseup = function (e) {
-        var x = e.layerX - e.currentTarget.offsetLeft;
-        var y = e.layerY - e.currentTarget.offsetTop;
-        if (juego.hayFichaClickeada()) {
-            juego.insertarFicha(x, y);
+    function initEvents() {
+        canvas.onmousedown = function (e) {
+            var x = e.layerX - e.currentTarget.offsetLeft;
+            var y = e.layerY - e.currentTarget.offsetTop;
+            juego.isClickedFicha(x, y);
         }
-    };
-}
+
+        canvas.onmousemove = function (e) {
+            var x = e.layerX - e.currentTarget.offsetLeft;
+            var y = e.layerY - e.currentTarget.offsetTop;
+            if (juego.hayFichaClickeada())
+                juego.moveFicha(x, y);
+        }
+
+        canvas.onmouseup = function (e) {
+            var x = e.layerX - e.currentTarget.offsetLeft;
+            var y = e.layerY - e.currentTarget.offsetTop;
+            if (juego.hayFichaClickeada()) {
+                juego.insertarFicha(x, y);
+            }
+        };
+    }
+});

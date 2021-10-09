@@ -1,6 +1,5 @@
-class Jugador{
-    
-    constructor(ctx, nombre, nroJugador){
+class Jugador {
+    constructor(ctx, nombre, nroJugador) {
         this.ctx = ctx;
         this.nombre = nombre;
         this.nroJugador = nroJugador;
@@ -8,7 +7,7 @@ class Jugador{
         //Implementar si tengo tiempo
     }
 
-    getNombre(){
+    getNombre() {
         return this.nombre;
     }
 
@@ -16,7 +15,7 @@ class Jugador{
         return this.nroJugador;
     }
 
-    setNombre(nombre){
+    setNombre(nombre) {
         this.nombre = nombre;
     }
 
