@@ -9,13 +9,14 @@ class Ficha {
         this.getSrc(color)
     }
 
+    //Este metodo Diferencia entre las fichas del jugador 1, las del 2 y las que vas en el tablero.
     getSrc(color) {
         if (color === 'j1')
-            this.imagen.src = '/TP2/img/ficha1.png';
+            this.imagen.src = '/img/ficha1.png';
         else if (color === 'j2')
-            this.imagen.src = '/TP2/img/ficha2.png';
+            this.imagen.src = '/img/ficha2.png';
         else if (color === 'ranuras')
-            this.imagen.src = '/TP2/img/negro2.png';
+            this.imagen.src = '/img/negro2.png';
     }
 
     getJugador() {
@@ -53,12 +54,16 @@ class Ficha {
         this.estado = estado;
     }
 
+    //Este metodo indica si la ficha esta clickeada no.
     isClicked(x, y) {
         var xLayer = x - this.x;
         var yLayer = y - this.y;
+        //Esta cuenta calcula si nos encontramos dentro de la ficha.
         return Math.sqrt(xLayer * xLayer + yLayer * yLayer) < this.radio;
     }
 
+    //Este metodo dibujar, dibuja un circulo con los parametros correspondientes, dandole forma
+    //a la ficha. Luego dibuja la imagen sobr la ficha.
     dibujar() {
         this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, this.radio, 0, Math.PI * 2);
@@ -66,6 +71,5 @@ class Ficha {
         this.ctx.fill();
         this.ctx.closePath();
         this.ctx.drawImage(this.imagen, this.x - this.radio - 6, this.y - this.radio - 6);
-
     }
 }

@@ -1,12 +1,10 @@
-document.addEventListener("DOMContentLoaded", function (event) {
-
     var canvas = document.getElementById('tablero');
     var iniciarJuego = document.getElementById('botonComenzar');
     var retry = document.getElementById('botonRetry');
 
     var juego = new Juego(canvas);
 
-
+    //Envento del boton iniciar que inicia el juego
     iniciarJuego.onclick = function () {
         juego = new Juego(canvas);
         juego.prepareJuego();
@@ -15,6 +13,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         document.getElementById('info-empate').classList.add('oculto');
     }
 
+    
     retry.onclick = function () {
         juego = new Juego(canvas);
         juego.prepareJuego();
@@ -23,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
         document.getElementById('info-empate').classList.add('oculto');
     }
 
+    //Este metodo contiene los tres event que permiten el movimient de las fichas.
     function initEvents() {
         canvas.onmousedown = function (e) {
             var x = e.layerX - e.currentTarget.offsetLeft;
@@ -45,4 +45,3 @@ document.addEventListener("DOMContentLoaded", function (event) {
             }
         };
     }
-});

@@ -1,10 +1,9 @@
 class Jugador {
+
     constructor(ctx, nombre, nroJugador) {
         this.ctx = ctx;
         this.nombre = nombre;
         this.nroJugador = nroJugador;
-        //Fichas deberian ser de cada jugador
-        //Implementar si tengo tiempo
     }
 
     getNombre() {

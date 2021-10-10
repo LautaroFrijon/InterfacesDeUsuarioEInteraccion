@@ -3,7 +3,6 @@ body{
 }
 
 h1, h2{
-    font-family:'';
     font-weight: bold;
 }
 
@@ -43,8 +42,6 @@ h1, h2{
     margin-left: 5px;
 }
 
-
-
 .oculto {
     display: none;
 }
@@ -52,6 +49,44 @@ h1, h2{
 #botonComenzar,#botonRetry{
     background-color: red;
 }
+
+#boxRoja{
+    background-color: #CE4545;
+    border-radius: 15px;
+    padding-bottom: 15px;
+    width: 1100;
+}
+
+#turnoBox{
+    margin:7px;
+}
+
 #turno{
     color: white;
+    font-family: fantasy;
 }
+
+#J1{
+    border: 3px;
+    border-radius: 15px;
+    padding: 25px;
+    background-color: whitesmoke;
+    display: grid;
+    margin-left: 136px;
+}
+
+#J2{
+    border: 3px;
+    border-radius: 15px;
+    padding: 25px;
+    background-color: whitesmoke;
+    display: grid;
+    margin-left: 60px;
+}
+
+#nav{
+    margin-bottom: 15px;
+}
+
+
+    

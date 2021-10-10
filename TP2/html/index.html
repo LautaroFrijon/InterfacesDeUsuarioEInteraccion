@@ -1,19 +1,21 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta charset="utf-8" />
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-        <link rel="stylesheet" href= "/TP2/css/estilo.css">
+        <link rel="stylesheet" href= "/css/estilo.css">
     </head>
     <body>
-        <div class="row header">
-            <div id="J1" class="jugadores offset-md-1 col-md-2 header-acciones alert alert-info">
-                <h2 id="nombreJ1">JUGADOR 1</h2>
+        <div id="nav" class="row header">
+            <div id="J1" >
+                <h2 id="tituloJ1">JUGADOR 1</h2>
             </div>
-            <div class="header-acciones col-md-4 offset-md-1">
+            <div id="boxRoja" class="header-acciones col-md-4 offset-md-1">
                 <div class="row">
-                    <div class="col-md-12 header-page">
-                        <h2 id="turno">JUEGA:</h2>
+                    <div id="turnoBox" class="col-md-12 header-page">
+                        <h2 id="turno">Haga click para comenzar</h2>
 
                     </div>
                 </div>
@@ -31,8 +33,8 @@
                     
                 </div>
             </div>
-            <div id="J2" class="jugadores offset-md-1 col-md-2 header-acciones alert alert-info">
-                <h2>Jugador 2</h2>
+            <div id="J2" >
+                <h2 id="tituloJ2">JUGADOR 2</h2>
             </div>
         </div>
         <div class="row info">
@@ -50,11 +52,11 @@
         </div>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="/TP2/js/jugador.js"></script>
-    <script src="/TP2/js/ficha.js"></script>
-    <script src="/TP2/js/tablero.js"></script>
-    <script src="/TP2/js/juego.js"></script>
-    <script src="/TP2/js/main.js"></script>
+    <script src="/js/jugador.js"></script>
+    <script src="/js/ficha.js"></script>
+    <script src="/js/tablero.js"></script>
+    <script src="/js/juego.js"></script>
+    <script src="/js/main.js"></script>
 
 </body>
 </html>
