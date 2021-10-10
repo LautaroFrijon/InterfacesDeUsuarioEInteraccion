@@ -12,11 +12,11 @@ class Ficha {
     //Este metodo Diferencia entre las fichas del jugador 1, las del 2 y las que vas en el tablero.
     getSrc(color) {
         if (color === 'j1')
-            this.imagen.src = '/img/ficha1.png';
+            this.imagen.src = '/TP2/img/ficha1.png';
         else if (color === 'j2')
-            this.imagen.src = '/img/ficha2.png';
+            this.imagen.src = '/TP2/img/ficha2.png';
         else if (color === 'ranuras')
-            this.imagen.src = '/img/negro2.png';
+            this.imagen.src = '/TP2/img/negro2.png';
     }
 
     getJugador() {
