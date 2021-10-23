@@ -1,0 +1,45 @@
+#background{
+    width: 1222px ;
+    height: 511px;
+    display: flex;
+    align-items: flex-end;
+    background: url(/fondo2D.jpg);
+    animation: parallax 4.5s linear infinite;
+}
+
+.navbar{
+    border-bottom: 2px solid black;
+    padding-bottom: 8px;
+}
+
+#box-personaje{
+    width: 115px;
+    height: 150px;
+    margin-left: 15px;
+    margin-bottom: 45px;
+    display: flex;
+    position: relative;
+    background: url(/png/Component1.png) left ;
+    animation: walk 3s steps(10) linear infinite;
+}
+
+@keyframes parallax {
+    0%{
+        background-position: 0px ;
+    }
+    100%{
+        background-position: -1022px  ;
+    }
+}
+
+@keyframes walk {
+    0%{
+        background-position: 0px;
+    }
+    100%{
+        background-position: -1120px;
+    }
+}
+
+
+

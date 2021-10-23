@@ -1,4 +1,5 @@
 class Ficha {
+    
     constructor(x, y, color, jugador) {
         this.x = x;
         this.y = y;
