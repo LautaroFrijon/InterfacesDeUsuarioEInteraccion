@@ -5,11 +5,11 @@ class Personaje{
         this.posY = posY;
     }
 
-    jump(e) {
+    /*jump(e) {
         if(e.keyCode == 32){
             personaje.style.animationName = "jump";
         }
-    }
+    }*/
 
     
 
