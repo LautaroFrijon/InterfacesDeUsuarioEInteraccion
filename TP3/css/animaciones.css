@@ -7,20 +7,64 @@
     animation: parallax 4.5s linear infinite;
 }
 
+.suelo{
+    width: 1920px;
+    height: 42px;
+    background: url(/TP3/png/kisspng-table-wood-flooring-wood-flooring-hardwood-wooden-floor-5abfa197315c25.2743480715225081832022.png)repeat-x 0px 0px;
+    background-size: 1920px 42px;
+    animation: movsuelo 4.5s linear infinite;
+}
+
+.puntaje{
+    width: 100px;
+    height: 30px;
+    position: absolute;
+    top: 5px;
+    right: 15px;
+    z-index: 10;
+    color: #d48871;
+    font-family: Verdana;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: right;
+}
+
 .navbar{
     border-bottom: 2px solid black;
     padding-bottom: 8px;
 }
 
-#box-personaje{
+.box-personaje{
     width: 115px;
     height: 150px;
     margin-left: 15px;
-    margin-bottom: 45px;
+    margin-bottom: 0px;
     display: flex;
-    position: relative;
+    position: absolute;
+    background: url(/TP3/png/stand.png) left ;
+    animation: stand 1s steps(10) infinite;
+}
+
+.box-personaje-walk{
+    width: 115px;
+    height: 150px;
+    margin-left: 25px;
+    margin-bottom: 0px;
+    display: flex;
+    position: absolute;
     background: url(/TP3/png/walk.png) left ;
     animation: walk 1s steps(10) infinite;
+}
+
+.box-personaje-jump{
+    width: 115px;
+    height: 150px;
+    margin-left: 15px;
+    margin-bottom: 0px;
+    display: flex;
+    position: absolute;
+    background: url(/TP3/png/jump.png) left ;
+    animation: jump 1s steps(10) infinite;
 }
 
 @keyframes parallax {
@@ -32,7 +76,14 @@
     }
 }
 
-
+@keyframes stand {
+    0%{
+        background-position: 0px;        
+    }
+    100%{
+        background-position: -1120px;
+    }
+}
 
 @keyframes walk {
     0%{
@@ -52,16 +103,13 @@
     }
 }
 
-@keyframes stand {
+@keyframes movsuelo {
     0%{
-        background-position: 0px;        
+        background-position: 0px;
     }
     100%{
-        background-position: -1120px;
+        background-position: -1920px;
     }
 }
-
-
-
 
 
