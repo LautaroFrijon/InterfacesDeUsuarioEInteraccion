@@ -67,6 +67,18 @@
     animation: jump 1s steps(10) infinite;
 }
 
+.obstaculo{
+    width: 46px;
+    height: 96px;
+
+    position: absolute;
+    bottom: 16px;
+    left: 600px;
+    z-index: 1;
+    background: url(/TP3/png/piedra.png) no-repeat;
+}
+
+
 @keyframes parallax {
     0%{
         background-position: 0px ;

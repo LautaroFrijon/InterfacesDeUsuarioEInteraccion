@@ -1,47 +1,47 @@
-class Personaje{
+class Personaje {
 
-    constructor(posX, posY, parado, saltando){
+    constructor(posX, posY, parado, saltando) {
         this.posX = posX;
         this.posY = posY;
         this.parado = parado;
         this.saltando = saltando;
     }
 
-    getX(){
+    getX() {
         return this.posX;
     }
 
-    getY(){
+    getY() {
         return this.posY;
     }
 
-    getParado(){
+    getParado() {
         return this.parado;
     }
 
-    getSaltando(){
+    getSaltando() {
         return this.saltando;
     }
 
-    setX(x){
+    setX(x) {
         this.posX = x;
     }
 
-    setY(y){
+    setY(y) {
         this.posY = y;
     }
 
-    setParado(parado){
+    setParado(parado) {
         this.parado = parado;
     }
-    
-    setSaltando(saltando){
+
+    setSaltando(saltando) {
         this.saltando = saltando;
     }
-     
-    jump(e){
+
+    jump(e) {
         let tecla = e.key;
-        if(tecla == "ArrowUp"){
+        if (tecla == "ArrowUp") {
             this.setSaltando(true);
             console.log("llega");
             return true;
@@ -49,12 +49,23 @@ class Personaje{
 
     }
 
-   dejarSalto() {
-    if(this.getSaltando){
-        this.setSaltando(false);
-        return true;
+    dejarSalto() {
+        if (this.getSaltando) {
+            this.setSaltando(false);
+            return true;
+        }
+
     }
 
-}
-  
+    MoverPersonaje() {
+        dinoPosY += velY * deltaTime;
+        if (dinoPosY < sueloY) {
+
+            TocarSuelo();
+        }
+        dino.style.bottom = dinoPosY + "px";
+    }
+
+
+
 }
