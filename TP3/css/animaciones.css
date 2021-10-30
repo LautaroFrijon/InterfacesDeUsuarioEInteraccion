@@ -3,7 +3,7 @@
     height: 511px;
     display: flex;
     align-items: flex-end;
-    background: url(/TP3/png/png/BG/BG.png);
+    background: url(img/BG.png);
     animation: parallax 4.5s linear infinite;
 }
 
@@ -12,13 +12,13 @@
     height: 511px;
     display: flex;
     align-items: flex-end;
-    background: url(/TP3/png/png/BG/BG.png);
+    background: url(img/BG.png);
 }
 
 .suelo{
     width: 1920px;
     height: 42px;
-    background: url(/TP3/png/kisspng-table-wood-flooring-wood-flooring-hardwood-wooden-floor-5abfa197315c25.2743480715225081832022.png)repeat-x 0px 0px;
+    background: url(img/kisspng-table-wood-flooring-wood-flooring-hardwood-wooden-floor-5abfa197315c25.2743480715225081832022.png)repeat-x 0px 0px;
     background-size: 1920px 42px;
     animation: movsuelo 4.5s linear infinite;
 }
@@ -49,7 +49,7 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(/TP3/png/stand.png) left center ;
+    background: url(img/stand.png) left center ;
     animation: moveStyleSheet 1s steps(10) infinite;
 }
 
@@ -60,7 +60,7 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(/TP3/png/walk.png) left center;
+    background: url(img/walk.png) left center;
     animation: moveStyleSheet 1s steps(10) infinite;
 }
 
@@ -71,7 +71,7 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(/TP3/png/jump.png) left center;
+    background: url(img/jump.png) left center;
     animation: jump 1s steps(10) infinite;
 }
 
@@ -82,7 +82,7 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(/TP3/png/slide.png) left ;
+    background: url(img/slide.png) left ;
     animation: moveStyleSheet 1s steps(10) infinite;
 }
 
@@ -93,7 +93,7 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(/TP3/png/dead.png) left ;
+    background: url(img/dead.png) left ;
     animation: moveStyleSheet 1s steps(10) 1;
 }
 
@@ -104,7 +104,7 @@
     left: 1222px;
     margin-bottom: 5px;
     display: flex;
-    background: url(/TP3/png/png/Object/Crate.png) no-repeat;
+    background: url(img/Crate.png) no-repeat;
 }
 
 .box-obstaculo-move{
@@ -114,7 +114,7 @@
     left: 1222px;
     margin-bottom: 5px;
     display: flex;
-    background: url(/TP3/png/png/Object/Crate.png) no-repeat;
+    background: url(img/Crate.png) no-repeat;
     animation: mover 4s infinite;
 }
 
