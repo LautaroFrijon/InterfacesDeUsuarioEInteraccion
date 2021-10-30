@@ -1,10 +1,18 @@
-#background{
+.background{
     width: 1222px ;
     height: 511px;
     display: flex;
     align-items: flex-end;
-    background: url(/TP3/fondo2D.jpg);
+    background: url(/TP3/png/png/BG/BG.png);
     animation: parallax 4.5s linear infinite;
+}
+
+.background-stop{
+    width: 1222px ;
+    height: 511px;
+    display: flex;
+    align-items: flex-end;
+    background: url(/TP3/png/png/BG/BG.png);
 }
 
 .suelo{
@@ -37,12 +45,12 @@
 .box-personaje{
     width: 115px;
     height: 150px;
-    margin-left: 15px;
+    margin-left: 25px;
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(/TP3/png/stand.png) left ;
-    animation: stand 1s steps(10) infinite;
+    background: url(/TP3/png/stand.png) left center ;
+    animation: moveStyleSheet 1s steps(10) infinite;
 }
 
 .box-personaje-walk{
@@ -52,43 +60,83 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(/TP3/png/walk.png) left ;
-    animation: walk 1s steps(10) infinite;
+    background: url(/TP3/png/walk.png) left center;
+    animation: moveStyleSheet 1s steps(10) infinite;
 }
 
 .box-personaje-jump{
     width: 115px;
     height: 150px;
-    margin-left: 15px;
+    margin-left: 25px;
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(/TP3/png/jump.png) left ;
+    background: url(/TP3/png/jump.png) left center;
     animation: jump 1s steps(10) infinite;
 }
 
-.obstaculo{
-    width: 46px;
-    height: 96px;
-
+.box-personaje-slide{
+    width: 112px;
+    height: 120px;
+    margin-left: 25px;
+    margin-bottom: 0px;
+    display: flex;
     position: absolute;
-    bottom: 16px;
-    left: 600px;
-    z-index: 1;
-    background: url(/TP3/png/piedra.png) no-repeat;
+    background: url(/TP3/png/slide.png) left ;
+    animation: moveStyleSheet 1s steps(10) infinite;
 }
 
+.box-personaje-dead{
+    width: 115px;
+    height: 150px;
+    margin-left: 25px;
+    margin-bottom: 0px;
+    display: flex;
+    position: absolute;
+    background: url(/TP3/png/dead.png) left ;
+    animation: moveStyleSheet 1s steps(10) 1;
+}
+
+.box-obstaculo{
+    width: 77px;
+    height: 77px;
+    position: absolute;
+    left: 1222px;
+    margin-bottom: 5px;
+    display: flex;
+    background: url(/TP3/png/png/Object/Crate.png) no-repeat;
+}
+
+.box-obstaculo-move{
+    width: 77px;
+    height: 77px;
+    position: absolute;
+    left: 1222px;
+    margin-bottom: 5px;
+    display: flex;
+    background: url(/TP3/png/png/Object/Crate.png) no-repeat;
+    animation: mover 4s infinite;
+}
+
+@keyframes mover {
+    0%{
+        transform: translateX(0px);
+    }
+    100%{
+        transform: translateX(-1400px);
+    }
+}
 
 @keyframes parallax {
     0%{
         background-position: 0px ;
     }
     100%{
-        background-position: -1022px  ;
+        background-position: -1000px  ;
     }
 }
 
-@keyframes stand {
+@keyframes moveStyleSheet {
     0%{
         background-position: 0px;        
     }
@@ -97,21 +145,16 @@
     }
 }
 
-@keyframes walk {
-    0%{
-        background-position: 0px;
-    }
-    100%{
-        background-position: -1120px;
-    }
-}
 
 @keyframes jump {
     0%{
-        background-position: 0px;
+        background-position: 0px; transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-200px);
     }
     100%{
-        background-position: -1120px;
+        background-position: -1120px; transform:  translateY(0px)
     }
 }
 
@@ -123,5 +166,25 @@
         background-position: -1920px;
     }
 }
+
+/*@keyframes walk {
+    0%{
+        background-position: 0px;
+    }
+    100%{
+        background-position: -1120px;
+    }
+}
+
+@keyframes dead {
+   0%{
+        background-position: 0px;
+   } 
+   100%{
+        background-position: -1120px;
+   }
+}
+*/
+
 
 

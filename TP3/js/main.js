@@ -1,58 +1,37 @@
+//No llegamos a terminarlo para le entrega, para la reentrega lo vamos a tener cocinado. 
+//Disculpas por entregar el trabajo incompleto
 document.addEventListener("DOMContentLoaded", function () {
-    let person = new Personaje(2, 3, false, false);
-    let e1 = new Escenario(1, 2, Personaje);
-    let obs = new obstaculo(1, 1, 1, 1);
+
     let personaje = document.querySelector(".box-personaje");
+    let obstaculo = document.querySelector(".box-obstaculo");
+    let person = new Personaje(2, 3, false, false, false);
+    let obs = new Obstaculo(false)
+    let juego = new Juego();
+    let keydown;
+    let ev;
 
-
-    document.addEventListener("keydown", function (e) {
-        if (person.jump(e)) {
-            personaje.classList.add("box-personaje-jump");
-            personaje.style.bottom = 120 + "px";
-            person.setY(120);
-
-            console.log('entra');
-
-
-
-        };
-
-
-        setTimeout(function (e) {
-            if (person.dejarSalto()) {
-                personaje.classList.remove("box-personaje-jump")
-                let pos = person.getY() - 100;
-                console.log(pos);
-                personaje.style.bottom = pos + "px";
-
-            }
-        }, 1000);
+    window.addEventListener("keydown", (e) => {
+        keydown = true;
+        ev = e;
     });
 
+    window.addEventListener("keyup", (e) => {
+        keydown = false;
+        ev = e;
+    })
 
+    var time = new Date();
 
-    setTimeout(function (e) {
-        obs.CrearObstaculo();
-        console.log('entra a crear el oibs')
-
-    }, 1000);
-
-
-
-
-
-
-
-
-    function walk() {
-        personaje.classList.add("box-personaje-walk");
+    //GAME LOOP
+    /*if(document.readyState === "complete" || document.readyState === "interactive"){
+        setTimeout(Init, 1);
+    }else{
+        document.addEventListener("DOMContentLoaded", Init); 
     }
-
-    document.addEventListener("keyup", walk);
 
     function Init() {
         time = new Date();
-        Start();
+      
         Loop();
     }
 
@@ -62,5 +41,63 @@ document.addEventListener("DOMContentLoaded", function () {
         Update();
         requestAnimationFrame(Loop);
     }
+
+    function Update() {
+        if(person.getParado()) return;
+   
+        MoverObstaculos();
+       
+    
+        velY -= gravedad * deltaTime;
+    }*/
+
+    //Eventos
+
+    //jump
+    document.addEventListener("keydown", activarJump);
+
+    //Slide
+    document.addEventListener("keydown", activarSlide);
+
+    //walk
+    document.addEventListener("keyup", activarWalk);
+
+    window.requestAnimationFrame(colision);
+    let req;
+
+    function colision(){
+        if (juego.ifColision()) {
+            window.cancelAnimationFrame(req);
+        } else {
+            req = window.requestAnimationFrame(colision);
+        }
+    }
+
+    //Funciones
+    function activarWalk(){
+            personaje.classList.add("box-personaje-walk");
+    }
+
+    function activarJump(ev){
+        if(ev.key == "ArrowUp"){
+            personaje.classList.add("box-personaje-jump");
+        }
+        setTimeout(function(){
+            personaje.classList.remove("box-personaje-jump");
+        }, 1000);
+    }
+
+    function activarSlide(ev){
+        if(ev.key == "ArrowDown"){
+            personaje.classList.add("box-personaje-slide");
+        }
+        setTimeout(function(){
+            personaje.classList.remove("box-personaje-slide");
+        }, 1000);
+     }
+
+    setTimeout(function(){
+        juego.generarObstaculo();
+    }, 1000);
 
 });
