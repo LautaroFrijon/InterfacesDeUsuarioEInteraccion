@@ -1,6 +1,8 @@
 class Obstaculo {
 
-    constructor(hidden) {
+    constructor(posX, posY, hidden) {
+        this.posX = posX;
+        this.posY = posY;
         this.personaje = null;
         this.obstaculo = null;
         this.hidden = hidden;
@@ -66,13 +68,13 @@ class Obstaculo {
         this.tiempoObstaculoMin = time;
     }
 
-    generarObstaculo(posX, posY) {
+    /*generarObstaculo(posX, posY) {
         this.obstaculo = document.createElement("div");
         //this.obstaculo.setAttribute("class", "box-obstaculo");
         this.obstaculo.style.left = posX.x + 'px';
         this.obstaculo.style.top = posY.y + 'px';
-        document.querySelector(".background").appendChild(this.obstaculo);
+        document.querySelector(".background").appendChild(this.obstaculo);  
         console.log("obstaculoagregado");
-    }
+    }*/
 
 }

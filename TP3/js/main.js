@@ -2,14 +2,17 @@
 //Disculpas por entregar el trabajo incompleto
 document.addEventListener("DOMContentLoaded", function () {
 
+    let fondo = document.querySelector(".background");
     let personaje = document.querySelector(".box-personaje");
+    let suelo = document.querySelector(".suelo");
     let obstaculo = document.querySelector(".box-obstaculo");
-    let person = new Personaje(2, 3, false, false, false);
-    let obs = new Obstaculo(false)
+    let puntaje = document.querySelector(".puntaje");
     let juego = new Juego();
-    let keydown;
-    let ev;
+    let req;
+    var score = 0;
+    const btnPlayStop = document.querySelector("#btnIniciarPausar");
 
+    //Eventos
     window.addEventListener("keydown", (e) => {
         keydown = true;
         ev = e;
@@ -18,9 +21,31 @@ document.addEventListener("DOMContentLoaded", function () {
     window.addEventListener("keyup", (e) => {
         keydown = false;
         ev = e;
-    })
+    });
 
-    var time = new Date();
+    //jump
+    document.addEventListener("keydown", activarJump);
+
+    //Slide
+    document.addEventListener("keydown", activarSlide);
+
+    //walk
+    document.addEventListener("keyup", activarWalk);
+   
+    //Pausa
+    btnPlayStop.addEventListener("click", function(){
+        if(btnPlayStop.classList.contains("iniciar") && !juego.ifColision()){
+            juego.pause(fondo, personaje, suelo, obstaculo, puntaje);
+            btnPlayStop.classList.toggle("iniciar");
+            console.log("PAUSA");
+        }else if(!juego.ifColision()){
+            juego.resumeGame(fondo, personaje, suelo, obstaculo);
+            btnPlayStop.classList.toggle("iniciar");
+            console.log(juego.ifColision());
+        }
+    });
+
+    juego.score(score);
 
     //GAME LOOP
     /*if(document.readyState === "complete" || document.readyState === "interactive"){
@@ -51,19 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
         velY -= gravedad * deltaTime;
     }*/
 
-    //Eventos
-
-    //jump
-    document.addEventListener("keydown", activarJump);
-
-    //Slide
-    document.addEventListener("keydown", activarSlide);
-
-    //walk
-    document.addEventListener("keyup", activarWalk);
-
-    window.requestAnimationFrame(colision);
-    let req;
+    //Funciones
 
     function colision(){
         if (juego.ifColision()) {
@@ -73,13 +86,12 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     }
 
-    //Funciones
     function activarWalk(){
-            personaje.classList.add("box-personaje-walk");
+        personaje.classList.add("box-personaje-walk");
     }
 
     function activarJump(ev){
-        if(ev.key == "ArrowUp"){
+        if((ev.key == "ArrowUp")){
             personaje.classList.add("box-personaje-jump");
         }
         setTimeout(function(){
@@ -88,16 +100,20 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     function activarSlide(ev){
-        if(ev.key == "ArrowDown"){
+        if((ev.key == "ArrowDown")){
             personaje.classList.add("box-personaje-slide");
         }
         setTimeout(function(){
             personaje.classList.remove("box-personaje-slide");
         }, 1000);
-     }
+    }
 
     setTimeout(function(){
         juego.generarObstaculo();
     }, 1000);
 
+    setInterval(function(){
+        colision();
+    },50);
+    
 });

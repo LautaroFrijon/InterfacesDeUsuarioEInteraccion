@@ -1,9 +1,10 @@
 .background{
-    width: 1222px ;
-    height: 511px;
+    width: 100%;
+    height: 600px;
     display: flex;
     align-items: flex-end;
-    background: url(img/BG.png);
+    position: relative;
+    background: url(/img/BG.png);
     animation: parallax 4.5s linear infinite;
 }
 
@@ -12,15 +13,55 @@
     height: 511px;
     display: flex;
     align-items: flex-end;
-    background: url(img/BG.png);
+    position: relative;
+    background: url(/img/BG.png);
+}
+
+.background#instrucciones{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+#instrucciones{
+    color: #d48871;
+    display: flex;
+    align-items: center;
+    position: absolute;
+}
+
+.btn.iniciar{
+    border-style: double;
+    border-width: 0px 0 0px 60px;
+}
+
+.btn{
+    border:0;
+    position: absolute;
+    background: transparent;
+    box-sizing: border-box;
+    width: 0;
+    height: 74px;
+    top: 5px;
+    left: 15px;
+    border-color: transparent transparent transparent #d48871;
+    transition: 1000ms all ease;
+    cursor: pointer;
+    border-style: solid;
+    border-width: 37px 0 37px 60px;
+}
+
+.btn:hover{
+    border-color: transparent transparent transparent #404040 ;
 }
 
 .suelo{
     width: 1920px;
     height: 42px;
-    background: url(img/kisspng-table-wood-flooring-wood-flooring-hardwood-wooden-floor-5abfa197315c25.2743480715225081832022.png)repeat-x 0px 0px;
+    background: url(/img/kisspng-table-wood-flooring-wood-flooring-hardwood-wooden-floor-5abfa197315c25.2743480715225081832022.png)repeat-x 0px 0px;
     background-size: 1920px 42px;
-    animation: movsuelo 4.5s linear infinite;
+    animation: movsuelo 4s linear infinite;
 }
 
 .puntaje{
@@ -49,7 +90,7 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(img/stand.png) left center ;
+    background: url(/img/stand.png) left center ;
     animation: moveStyleSheet 1s steps(10) infinite;
 }
 
@@ -60,18 +101,18 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(img/walk.png) left center;
+    background: url(/img/walk.png) left center;
     animation: moveStyleSheet 1s steps(10) infinite;
 }
 
 .box-personaje-jump{
     width: 115px;
     height: 150px;
-    margin-left: 25px;
-    margin-bottom: 0px;
+    margin-bottom: 80px;
+    
     display: flex;
     position: absolute;
-    background: url(img/jump.png) left center;
+    background: url(/img/jump.png) left center;
     animation: jump 1s steps(10) infinite;
 }
 
@@ -82,19 +123,20 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(img/slide.png) left ;
-    animation: moveStyleSheet 1s steps(10) infinite;
+    background: url(/img/slide.png) left ;
+    animation: slide 1s steps(10) infinite;
 }
 
 .box-personaje-dead{
-    width: 115px;
-    height: 150px;
+    width: 150px;
+    height: 120px;
+    padding-left: 0;
     margin-left: 25px;
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(img/dead.png) left ;
-    animation: moveStyleSheet 1s steps(10) 1;
+    background: url(/img/dead.png) left ;
+    animation: dead 1s steps(10) 1;
 }
 
 .box-obstaculo{
@@ -104,7 +146,17 @@
     left: 1222px;
     margin-bottom: 5px;
     display: flex;
-    background: url(img/Crate.png) no-repeat;
+    background: url(/img/Crate.png) no-repeat;
+}
+
+.box-obstaculo-arriba{
+    width: 77px;
+    height: 77px;
+    position: absolute;
+    left: 1222px;
+    margin-bottom: 120px;
+    display: flex;
+    background: url(/img/Crate.png) no-repeat;
 }
 
 .box-obstaculo-move{
@@ -114,16 +166,27 @@
     left: 1222px;
     margin-bottom: 5px;
     display: flex;
-    background: url(img/Crate.png) no-repeat;
-    animation: mover 4s infinite;
+    background: url(/img/Crate.png) no-repeat;
+    animation: moverObstaculo 4s infinite;
 }
 
-@keyframes mover {
+.box-obstaculo-move-up{
+    width: 77px;
+    height: 77px;
+    position: absolute;
+    left: 1222px;
+    margin-bottom: 120px;
+    display: flex;
+    background: url(/img/Crate.png) no-repeat;
+    animation: moverObstaculo 4s infinite;
+}
+
+@keyframes moverObstaculo {
     0%{
-        transform: translateX(0px);
+        transform: translateX(200px);
     }
     100%{
-        transform: translateX(-1400px);
+        transform: translateX(-1800px);
     }
 }
 
@@ -145,16 +208,39 @@
     }
 }
 
-
 @keyframes jump {
     0%{
         background-position: 0px; transform: translateY(0px);
     }
     50%{
-        transform: translateY(-200px);
+        transform: translateY(-120px);
     }
     100%{
         background-position: -1120px; transform:  translateY(0px)
+    }
+}
+
+@keyframes slide {
+    0%{
+        background-position: 0px;        
+    }
+    50%{
+        transform: scale(0.87) translateY(5px);
+    }
+    100%{
+        background-position: -1120px;
+    }
+}
+
+@keyframes dead{
+    0%{
+        background-position: 0px;
+    }
+    50%{
+        transform: translateY(10);
+    }
+    100%{
+        background-position: -1850px; transform: translateY(20);
     }
 }
 
@@ -176,14 +262,6 @@
     }
 }
 
-@keyframes dead {
-   0%{
-        background-position: 0px;
-   } 
-   100%{
-        background-position: -1120px;
-   }
-}
 */
 
 
