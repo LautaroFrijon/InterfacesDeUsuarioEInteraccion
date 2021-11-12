@@ -4,7 +4,7 @@
     display: flex;
     align-items: flex-end;
     position: relative;
-    background: url(./img/BG.png);
+    background: url(../img/BG.png);
     animation: parallax 4.5s linear infinite;
 }
 
@@ -14,7 +14,7 @@
     display: flex;
     align-items: flex-end;
     position: relative;
-    background: url(./img/BG.png);
+    background: url(../img/BG.png);
 }
 
 .background#instrucciones{
@@ -59,7 +59,7 @@
 .suelo{
     width: 1920px;
     height: 42px;
-    background: url(./img/kisspng-table-wood-flooring-wood-flooring-hardwood-wooden-floor-5abfa197315c25.2743480715225081832022.png)repeat-x 0px 0px;
+    background: url(../img/kisspng-table-wood-flooring-wood-flooring-hardwood-wooden-floor-5abfa197315c25.2743480715225081832022.png)repeat-x 0px 0px;
     background-size: 1920px 42px;
     animation: movsuelo 4s linear infinite;
 }
@@ -90,7 +90,7 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(./img/stand.png) left center ;
+    background: url(../img/stand.png) left center ;
     animation: moveStyleSheet 1s steps(10) infinite;
 }
 
@@ -101,7 +101,7 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(./img/walk.png) left center;
+    background: url(../img/walk.png) left center;
     animation: moveStyleSheet 1s steps(10) infinite;
 }
 
@@ -112,7 +112,7 @@
     
     display: flex;
     position: absolute;
-    background: url(./img/jump.png) left center;
+    background: url(../img/jump.png) left center;
     animation: jump 1s steps(10) infinite;
 }
 
@@ -123,7 +123,7 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(./img/slide.png) left ;
+    background: url(../img/slide.png) left ;
     animation: slide 1s steps(10) infinite;
 }
 
@@ -135,7 +135,7 @@
     margin-bottom: 0px;
     display: flex;
     position: absolute;
-    background: url(./img/dead.png) left ;
+    background: url(../img/dead.png) left ;
     animation: dead 1s steps(10) 1;
 }
 
@@ -146,7 +146,7 @@
     left: 1222px;
     margin-bottom: 5px;
     display: flex;
-    background: url(img/Crate.png) no-repeat;
+    background: url(../img/Crate.png) no-repeat;
 }
 
 .box-obstaculo-arriba{
@@ -156,7 +156,7 @@
     left: 1222px;
     margin-bottom: 120px;
     display: flex;
-    background: url(img/Crate.png) no-repeat;
+    background: url(../img/Crate.png) no-repeat;
 }
 
 .box-obstaculo-move{
@@ -166,7 +166,7 @@
     left: 1222px;
     margin-bottom: 5px;
     display: flex;
-    background: url(/img/Crate.png) no-repeat;
+    background: url(../img/Crate.png) no-repeat;
     animation: moverObstaculo 4s infinite;
 }
 
@@ -177,7 +177,7 @@
     left: 1222px;
     margin-bottom: 120px;
     display: flex;
-    background: url(img/Crate.png) no-repeat;
+    background: url(../img/Crate.png) no-repeat;
     animation: moverObstaculo 4s infinite;
 }
 
