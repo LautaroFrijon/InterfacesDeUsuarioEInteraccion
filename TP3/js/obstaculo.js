@@ -1,11 +1,12 @@
 class Obstaculo {
 
-    constructor(posX, posY, hidden) {
+    constructor(posX, posY, hidden, isHongo) {
         this.posX = posX;
         this.posY = posY;
         this.personaje = null;
         this.obstaculo = null;
         this.hidden = hidden;
+        this.isHongo = isHongo;
     }
 
     getPosX(){

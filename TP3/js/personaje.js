@@ -1,11 +1,9 @@
 class Personaje {
 
-    constructor(posX, posY, parado, saltando, agachado) {
+    constructor(posX, posY) {
         this.posX = posX;
         this.posY = posY;
-        this.parado = parado;
-        this.saltando = saltando;
-        this.agachado = agachado;
+        this.dead = false;
     }
 
     getX() {
@@ -16,30 +14,6 @@ class Personaje {
         return this.posY;
     }
 
-    getWidth(){
-        return this.width;
-    }
-
-    getHeigth(){
-        return this.heigth;
-    }
-
-    getParado() {
-        return this.parado;
-    }
-
-    getSaltando() {
-        return this.saltando;
-    }
-
-    getAgachado(){
-        return this.agachado;
-    }
-
-    setAgachado(agachado){
-        this.agachado = agachado;
-    }
-
     setX(x) {
         this.posX = x;
     }
@@ -48,20 +22,12 @@ class Personaje {
         this.posY = y;
     }
 
-    setWidth(width){
-        this.width = width;
+    getDead(){
+        return this.dead;
     }
 
-    setHeigth(heigth){
-        this.heigth = heigth;
-    }
-
-    setParado(parado) {
-        this.parado = parado;
-    }
-
-    setSaltando(saltando) {
-        this.saltando = saltando;
+    setDead(dead){
+        this.dead = dead;
     }
 
     jump() {

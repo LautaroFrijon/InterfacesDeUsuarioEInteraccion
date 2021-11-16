@@ -1,3 +1,4 @@
+/*FONDO*/
 .background{
     width: 100%;
     height: 600px;
@@ -9,19 +10,19 @@
 }
 
 .background-stop{
-    width: 1222px ;
-    height: 511px;
+    width: 100%;
+    height: 600px;
     display: flex;
     align-items: flex-end;
     position: relative;
     background: url(/img/BG.png);
 }
 
-.background#instrucciones{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
+#instrucciones{
+    display: grid;
+    align-items: flex-start;
+    margin-bottom: 500px;
+    margin-left: 500px;
 }
 
 #instrucciones{
@@ -31,6 +32,7 @@
     position: absolute;
 }
 
+/*BOTONES*/
 .btn.iniciar{
     border-style: double;
     border-width: 0px 0 0px 60px;
@@ -56,12 +58,20 @@
     border-color: transparent transparent transparent #404040 ;
 }
 
+/*SUELOE*/
 .suelo{
     width: 1920px;
     height: 42px;
     background: url(/img/kisspng-table-wood-flooring-wood-flooring-hardwood-wooden-floor-5abfa197315c25.2743480715225081832022.png)repeat-x 0px 0px;
     background-size: 1920px 42px;
     animation: movsuelo 4s linear infinite;
+}
+
+.suelo-stop{
+    width: 1920px;
+    height: 42px;
+    background: url(/img/kisspng-table-wood-flooring-wood-flooring-hardwood-wooden-floor-5abfa197315c25.2743480715225081832022.png)repeat-x 0px 0px;
+    background-size: 1920px 42px;
 }
 
 .puntaje{
@@ -83,6 +93,7 @@
     padding-bottom: 8px;
 }
 
+/*PERSONAJE*/
 .box-personaje{
     width: 115px;
     height: 150px;
@@ -139,23 +150,48 @@
     animation: dead 1s steps(10) 1;
 }
 
+/*HONGO*/
+.box-hongo{
+    width: 49px;
+    height: 41px;
+    left: 1300px;
+    margin-bottom: 0%;
+    display: flex;
+    position: absolute;
+    background-image: url(/img/Mushroom_1.png);
+}
+
+.box-hongo-move1{
+    width: 49px;
+    height: 41px;
+    left: 1300px;
+    margin-bottom: 0%;
+    display: flex;
+    position: absolute;
+    background-image: url(/img/Mushroom_1.png);
+    animation: moverHongo1 4s infinite;
+}
+
+.box-hongo-move2{
+    width: 49px;
+    height: 41px;
+    left: 1300px;
+    margin-bottom: 0%;
+    display: flex;
+    position: absolute;
+    background-image: url(/img/Mushroom_1.png);
+    animation: moverHongo2 4s infinite;
+}
+
+/*OBSTACULO*/
 .box-obstaculo{
     width: 77px;
     height: 77px;
     position: absolute;
-    left: 1222px;
+    left: 1300px;
     margin-bottom: 5px;
     display: flex;
-    background: url(/img/Crate.png) no-repeat;
-}
-
-.box-obstaculo-arriba{
-    width: 77px;
-    height: 77px;
-    position: absolute;
-    left: 1222px;
-    margin-bottom: 120px;
-    display: flex;
+    visibility: hidden;
     background: url(/img/Crate.png) no-repeat;
 }
 
@@ -163,7 +199,7 @@
     width: 77px;
     height: 77px;
     position: absolute;
-    left: 1222px;
+    left: 1300px;
     margin-bottom: 5px;
     display: flex;
     background: url(/img/Crate.png) no-repeat;
@@ -174,19 +210,141 @@
     width: 77px;
     height: 77px;
     position: absolute;
-    left: 1222px;
+    left: 1300px;
     margin-bottom: 120px;
     display: flex;
     background: url(/img/Crate.png) no-repeat;
     animation: moverObstaculo 4s infinite;
 }
 
+/*ANIMACIONES*/
 @keyframes moverObstaculo {
     0%{
         transform: translateX(200px);
     }
     100%{
-        transform: translateX(-1800px);
+        transform: translateX(-1900px);
+    }
+}
+
+@keyframes moverHongo1 {
+    0%{
+        transform: translateX(200px) translateY(0px);
+    }
+    10%{
+        transform: translateX(-400px) translateY(-240px);
+    }
+    20%{
+        transform: translateX(-600px) translateY(0px);
+    }
+    30%{
+        transform: translateX(-800px) translateY(-240px);
+    }
+    40%{
+        transform: translateX(-1000px) translateY(0px);
+    }
+    50%{
+        transform: translateX(-1200px) translateY(-240px);
+    }
+    60%{
+        transform: translateX(-1400px) translateY(0px);
+    }
+    70%{
+        transform: translateX(-1600px) translateY(-240px);    
+    }
+    80%{
+        transform: translateX(-1800px) translateY(0px);
+    }
+    100%{
+        transform: translateX(-1900px) translateY(-240px);
+    }
+}
+
+/*@-webkit-keyframes moverHongo1{
+    0% {
+        background-position: 0px 0px, 0px 0px;
+    }
+    100% {
+        background-position: 500px 1000px, 500px 500px;
+    }
+}*/
+/*@keyframes moverHongo2 {
+    0%{
+        background-position: 0px;
+    }  
+    100%{
+        background-position: 500px;
+    }
+}*/
+/*@-webkit-keyframes moverHongo2{
+    0% {
+        background-position: 0px 0px, 0px 0px;
+    }
+    100% {
+        background-position: 500px 1000px, 500px 500px;
+    }
+}*/
+
+@keyframes moverHongo2 {
+    0%{
+        transform: translateX(200px) translateY(-240px);
+    }
+    10%{
+        transform: translateX(-400px) translateY(0);
+    }
+    20%{
+        transform: translateX(-600px) translateY(-240px);
+    }
+    30%{
+        transform: translateX(-800px) translateY(0);
+    }
+    40%{
+        transform: translateX(-1000px) translateY(-240px);
+    }
+    50%{
+        transform: translateX(-1200px) translateY(0);
+    }
+    60%{
+        transform: translateX(-1400px) translateY(-240px);
+    }
+    70%{
+        transform: translateX(-1600px) translateY(0);    
+    }
+    80%{
+        transform: translateX(-1800px) translateY(-240px);
+    }
+    100%{
+        transform: translateX(-1900px) translateY(0px);
+    }
+}
+
+@keyframes parallax {
+    0%{
+        background-position: 0px ;
+    }
+    100%{
+        background-position: -1000px  ;
+    }
+}
+
+@keyframes moveStyleSheet {
+    0%{
+        background-position: 0px;        
+    }
+    100%{
+        background-position: -1120px;
+    }
+}
+
+@keyframes jump {
+    0%{
+        background-position: 0px; transform: translateY(0px);
+    }
+    50%{
+        transform: translateY(-120px);
+    }
+    100%{
+        background-position: -1120px; transform:  translateY(0px)
     }
 }
 
@@ -237,10 +395,10 @@
         background-position: 0px;
     }
     50%{
-        transform: translateY(10);
+        
     }
     100%{
-        background-position: -1850px; transform: translateY(20);
+        background-position: -1850px; ;
     }
 }
 
